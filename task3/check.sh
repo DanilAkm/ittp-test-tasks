@@ -1,3 +1,6 @@
+#!/bin/bash
+#предполагается, что диск только один
+
 occupied_mem=$(df -h | grep '^/dev' | awk '{print $5}')
 
 occupied_mem=${occupied_mem:0:2}
