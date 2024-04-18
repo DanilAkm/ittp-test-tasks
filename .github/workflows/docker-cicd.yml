@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: docker/build-push-action@v4
     - name: Build the Docker image
       # run: pwd
       run: docker build ./task2 --file Dockerfile --tag ci-image:1.0
