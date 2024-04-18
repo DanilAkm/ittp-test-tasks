@@ -1,0 +1,11 @@
+version: '2'
+
+services:
+  https:
+    build: .
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./www/html:/var/www/html'
+    restart: always
