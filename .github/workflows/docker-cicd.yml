@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build ../../task2 --file Dockerfile --tag ci-image:1.0
+      run: docker build task2 --file Dockerfile --tag ci-image:1.0
 
 # cd
   deploy:
