@@ -63,7 +63,7 @@ jobs:
         vm-cores: 2
         vm-memory: 1Gb
         vm-disk-size: 15Gb
-        vm-core-fraction: 2
+        vm-core-fraction: 20
         vm-subnet-id: ${{ secrets.YC_SUBNET_ID }}
         vm-zone-id: 'ru-central1-b'
         docker-compose-path: './task4/docker-compose.yml'
