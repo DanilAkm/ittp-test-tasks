@@ -1,30 +1,33 @@
-name: Docker Image CI
+# https://habr.com/ru/articles/697206/
 
 on:
   push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
+    baranches: [ "master" ]
+
+env:
+  SERV_IMAGE: ${{ secrets.DOCKER_HUB_USERNAME }}/test-serv:${{ github.sha }}
 
 jobs:
-# ci
-  build:
-
+  build-image:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: docker/build-push-action@v4
-    - name: Build the Docker image
-      # run: pwd
-      run: docker build ./task2 --file Dockerfile --tag ci-image:1.0
+    - name: Checkout
+      uses: actions/checkout@v3
 
-# cd
-  deploy:
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v3
-    - name: deploy container
-      run: docker run -d -p 80:80 -p 443:443 --name cd-cont ci-image:1.0
-
-
+    - name: Login to Dockerhub
+      uses: docker/login-action@v2
+      with:
+        username: ${{ secrets.DOCKER_HUB_USERNAME }}
+        password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+    
+    - name: Setup Buildx
+      uses: docker/setup-buildx-action@v2
+    
+    - name: Build Backend
+      uses: docker/build-push-action@v3
+      with:
+        context: ./
+        file: ./Dockerfile
+        push: true
+        tags: ${{ env.BACKEND_IMAGE }}
