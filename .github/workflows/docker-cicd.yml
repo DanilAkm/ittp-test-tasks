@@ -31,7 +31,6 @@ jobs:
     - name: Build serv
       uses: docker/build-push-action@v3
       with:
-        context: task4
-        file: Dockerfile
+        context: ./task4
         push: true
         tags: ${{ env.SERV_IMAGE }}
