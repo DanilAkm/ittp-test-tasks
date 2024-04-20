@@ -43,7 +43,7 @@ jobs:
 
     - name: Deploy COI VM
       id: deploy-coi
-      uses: yc-actions/yc-coi-deploy@v1.0.1
+      uses: yc-actions/yc-coi-deploy@2
       env:
         SERV_IMAGE: ${{ env.NGINX_IMAGE }}
         YC_VM_SSH: ${{ secrets.YC_VM_SSH }}
