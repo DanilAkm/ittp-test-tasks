@@ -56,7 +56,7 @@ jobs:
         vm-cores: 2
         vm-platform-id: 'standard-v2'
         vm-memory: 1Gb
-        vm-disk-size: 10Gb
+        vm-disk-size: 15Gb
         vm-core-fraction: 2
         vm-subnet-id: ${{ secrets.YC_SUBNET_ID }}
         docker-compose-path: './task4/docker-compose.yml'
