@@ -41,6 +41,13 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
+    - name: Login to Yandex Cloud Container Registry
+      id: login-cr
+      uses: yc-actions/yc-cr-login@v1
+      with:
+        yc-sa-json-credentials: ${{ secrets.YC_SA_JSON_CREDENTIALS }}
+
+
     - name: Deploy COI VM
       id: deploy-coi
       uses: yc-actions/yc-coi-deploy@v2
@@ -51,10 +58,9 @@ jobs:
       with:
         yc-sa-json-credentials: ${{ secrets.YC_SA_JSON_CREDENTIALS }}
         folder-id: ${{ secrets.YC_FOLDER_ID }}
-        VM-name: ${{ secrets.YC_VM_NAME }}
+        vm-name: ${{ secrets.YC_VM_NAME }}
         vm-service-account-id: ${{ secrets.YC_SERVICE_ACCOUNT_ID }}
         vm-cores: 2
-        vm-platform-id: 'standard-v2'
         vm-memory: 1Gb
         vm-disk-size: 15Gb
         vm-core-fraction: 2
