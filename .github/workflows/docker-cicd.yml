@@ -60,11 +60,15 @@ jobs:
         folder-id: ${{ secrets.YC_FOLDER_ID }}
         vm-name: ${{ secrets.YC_VM_NAME }}
         vm-service-account-id: ${{ secrets.YC_SERVICE_ACCOUNT_ID }}
-        vm-cores: 2
-        vm-memory: 1Gb
+        vm-cores: 1
+        vm-memory: 512Mb
         vm-disk-size: 15Gb
         vm-core-fraction: 20
         vm-subnet-id: ${{ secrets.YC_SUBNET_ID }}
         vm-zone-id: 'ru-central1-b'
         docker-compose-path: './task4/docker-compose.yml'
         user-data-path: './task4/user-data.yml'
+        # outputs: 
+        #   public-ip
+        #   created
+ 
