@@ -1,0 +1,10 @@
+---
+- hosts: webservers
+  vars:
+    nginx_user: www-data
+  become:
+    true
+  become_method:
+    sudo
+  roles:
+    - nginx

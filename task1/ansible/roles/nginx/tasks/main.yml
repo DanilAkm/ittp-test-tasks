@@ -1,0 +1,31 @@
+---
+- name: Install nginx Web Server
+  apt:
+    name=nginx
+    state=latest
+  when:
+    ansible_os_family == "Debian"
+  notify:
+    - nginx systemd
+
+- name: Create SSL dir
+  ansible.builtin.file:
+    path: /etc/nginx/ssl
+    state: directory
+
+- name: Add SSL cert
+  ansible.builtin.copy:
+    src: /home/boyceing/ittp-test-tasks/task4/nginx/ssl/
+    dest: /etc/nginx/ssl/
+      
+- name: Replace nginx.conf
+  template:
+    src=templates/nginx.conf
+    dest=/etc/nginx/nginx.conf
+  notify:
+    - nginx restart
+
+- name: Reload nginx
+  command: /bin/true
+  notify:
+    -  nginx systemd

@@ -1,0 +1,4 @@
+[webservers]
+slave1.ru-central1.internal	ansible_user=boy
+slave2.ru-central1.internal	ansible_user=boy
+
